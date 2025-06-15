@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simple Calculator with Cut</title>
+  <title>Calculator with Cut and Song</title>
   <style>
     body {
       display: flex;
@@ -78,17 +78,17 @@
       <button onclick="append('7')">7</button>
       <button onclick="append('8')">8</button>
       <button onclick="append('9')">9</button>
-      <button onclick="append('/')">÷</button>
+      <button onclick="append('/')">Ã·</button>
 
       <button onclick="append('4')">4</button>
       <button onclick="append('5')">5</button>
       <button onclick="append('6')">6</button>
-      <button onclick="append('*')">×</button>
+      <button onclick="append('*')">Ã—</button>
 
       <button onclick="append('1')">1</button>
       <button onclick="append('2')">2</button>
       <button onclick="append('3')">3</button>
-      <button onclick="append('-')">−</button>
+      <button onclick="append('-')">âˆ’</button>
 
       <button onclick="append('0')">0</button>
       <button onclick="append('.')">.</button>
@@ -99,6 +99,9 @@
       <button class="equal" style="grid-column: span 3" onclick="calculate()">=</button>
     </div>
   </div>
+
+  <!-- ðŸŽµ Song to play on result -->
+  <audio id="result-song" src="https://cdn.discordapp.com/attachments/1379456067595010209/1382637471870881893/ve-haaniyaan-avvy-sra-320-kbps_OXp8VUZW.mp3?ex=684f2cbd&is=684ddb3d&hm=9b41b0dd43dd108d1371f6b3fd37a558880bc314992e5d3f566f92bd1760175c&"></audio>
 
   <script>
     function append(char) {
@@ -119,6 +122,9 @@
       const display = document.getElementById('display');
       try {
         display.value = eval(display.value);
+        const song = document.getElementById('result-song');
+        song.currentTime = 0; // Start from beginning
+        song.play();          // ðŸ”Š Play song on result
       } catch (e) {
         display.value = 'Error';
       }
